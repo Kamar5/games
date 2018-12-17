@@ -1,9 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { shallow } from 'enzyme';
 import App from './App';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+it('should renders welcome message', () => {
+  const wrapper = shallow(<App />);
+  const welcome = <h2 style={{textAlign: 'center', margin: '0',paddingTop: '17px',backgroundColor: '#5ae45a'}}>Welcome to Game Center</h2>;
+  expect(wrapper.contains(welcome)).toEqual(true);
 });
