@@ -172,41 +172,41 @@ export default class TicTacToe extends React.Component {
   render() {
     return (
       <div className="TICTACTOE" style={{position: 'absolute', left: '50%', transform: 'translate(-50%, 0)'}}>
-        <div style={{marginTop: '17px', marginLeft: '94px'}}><span style={{color: '#00ff51', borderBottom: this.state.player1.turn ? '5px solid #37e937' : ''}}> Player 1(X)</span> <span style={{color: 'red'}}>vs</span> <span style={{color: '#00ff51',borderBottom: this.state.player2.turn ? '5px solid #37e937' : ''}}>Player 2(O)</span></div>
-        <Well style={{cursor: 'pointer',width:'100px', height:'100px', marginBottom: '0', marginTop: '17px', marginLeft: '17px', float: 'left', textAlign: 'center', fontSize: '40px'}} onClick={this.onUserClick.bind(this,this.findArrayElementById(11))}>
+        <div style={{marginTop: '17px', marginLeft: '74px'}}><span style={{color: '#00ff51', borderBottom: this.state.player1.turn ? '5px solid #37e937' : ''}}> Player 1(X)</span> <span style={{color: 'red'}}>vs</span> <span style={{color: '#00ff51',borderBottom: this.state.player2.turn ? '5px solid #37e937' : ''}}>Player 2(O)</span></div>
+        <Well style={{cursor: 'pointer',width:'100px', height:'100px', marginBottom: '0', marginTop: '17px', float: 'left', textAlign: 'center', fontSize: '40px'}} onClick={this.onUserClick.bind(this,this.findArrayElementById(11))}>
           {this.findArrayElementById(11).value}
         </Well>
         <Well style={{cursor: 'pointer',width:'100px', height:'100px', marginBottom: '0', marginTop: '17px', marginLeft: '1px', float: 'left', textAlign: 'center', fontSize: '40px'}} onClick={this.onUserClick.bind(this,this.findArrayElementById(12))}>
           {this.findArrayElementById(12).value}
         </Well>
-        <Well style={{cursor: 'pointer',width:'100px', height:'100px', marginBottom: '0', marginTop: '17px', marginLeft: '220px', textAlign: 'center', fontSize: '40px'}} onClick={this.onUserClick.bind(this,this.findArrayElementById(13))}>
+        <Well style={{cursor: 'pointer',width:'100px', height:'100px', marginBottom: '0', marginTop: '17px', marginLeft: '202px', textAlign: 'center', fontSize: '40px'}} onClick={this.onUserClick.bind(this,this.findArrayElementById(13))}>
           {this.findArrayElementById(13).value}
         </Well>
-        <Well style={{cursor: 'pointer',width:'100px', height:'100px', marginBottom: '0', marginTop: '1px', marginLeft: '17px', float: 'left', textAlign: 'center', fontSize: '40px' }} onClick={this.onUserClick.bind(this,this.findArrayElementById(21))}>
+        <Well style={{cursor: 'pointer',width:'100px', height:'100px', marginBottom: '0', marginTop: '1px', float: 'left', textAlign: 'center', fontSize: '40px' }} onClick={this.onUserClick.bind(this,this.findArrayElementById(21))}>
           {this.findArrayElementById(21).value}
         </Well>
         <Well style={{cursor: 'pointer',width:'100px', height:'100px', marginBottom: '0', marginTop: '1px', marginLeft: '1px', float: 'left', textAlign: 'center', fontSize: '40px'}} onClick={this.onUserClick.bind(this,this.findArrayElementById(22))}>
           {this.findArrayElementById(22).value}
         </Well>
-        <Well style={{cursor: 'pointer',width:'100px', height:'100px', marginBottom: '0', marginTop: '1px', marginLeft: '220px', textAlign: 'center', fontSize: '40px'}} onClick={this.onUserClick.bind(this,this.findArrayElementById(23))}>
+        <Well style={{cursor: 'pointer',width:'100px', height:'100px', marginBottom: '0', marginTop: '1px', marginLeft: '202px', textAlign: 'center', fontSize: '40px'}} onClick={this.onUserClick.bind(this,this.findArrayElementById(23))}>
           {this.findArrayElementById(23).value}
         </Well>
-        <Well style={{cursor: 'pointer',width:'100px', height:'100px', marginBottom: '0', marginTop: '1px', marginLeft: '17px', float: 'left', textAlign: 'center', fontSize: '40px' }} onClick={this.onUserClick.bind(this,this.findArrayElementById(31))}>
+        <Well style={{cursor: 'pointer',width:'100px', height:'100px', marginBottom: '0', marginTop: '1px', float: 'left', textAlign: 'center', fontSize: '40px' }} onClick={this.onUserClick.bind(this,this.findArrayElementById(31))}>
           {this.findArrayElementById(31).value}
         </Well>
         <Well style={{cursor: 'pointer',width:'100px', height:'100px', marginBottom: '0', marginTop: '1px', marginLeft: '1px', float: 'left', textAlign: 'center', fontSize: '40px'}} onClick={this.onUserClick.bind(this,this.findArrayElementById(32))}>
           {this.findArrayElementById(32).value}
         </Well>
-        <Well style={{cursor: 'pointer',width:'100px', height:'100px', marginBottom: '0', marginTop: '1px', marginLeft: '220px', textAlign: 'center', fontSize: '40px'}} onClick={this.onUserClick.bind(this,this.findArrayElementById(33))}>
+        <Well style={{cursor: 'pointer',width:'100px', height:'100px', marginBottom: '0', marginTop: '1px', marginLeft: '202px', textAlign: 'center', fontSize: '40px'}} onClick={this.onUserClick.bind(this,this.findArrayElementById(33))}>
           {this.findArrayElementById(33).value}
         </Well>
-        <div style={{color: '#00ff51',marginTop: '10px', marginLeft: '17px', float: 'left'}}>
+        <div style={{color: '#00ff51',marginTop: '10px', float: 'left'}}>
           Player 1: {this.state.player1.score} 
         </div>
         <div style={{color: '#00ff51', marginTop: '10px', marginLeft: '17px', float: 'left'}}>
           Player 2: {this.state.player2.score}           
         </div>
-        <Button style={{  marginTop: '6px', marginLeft: '17px'}} bsStyle="danger" onClick={this.resetBoard}>Reset Board</Button>
+        <Button style={{  marginTop: '6px', marginLeft: '17px'}} bsStyle="danger" onClick={this.resetBoard}>Reset the board</Button>
       </div>
     );
   }
