@@ -29,75 +29,27 @@ export default class TicTacToe extends React.Component {
     autoBind(this);
   }
   winCombination() {
-    const winCombo1 = this.state.tictactoeSet[0].value === this.state.tictactoeSet[1].value && this.state.tictactoeSet[1].value === this.state.tictactoeSet[2].value;
-    const winCombo2 = this.state.tictactoeSet[0].value === this.state.tictactoeSet[3].value && this.state.tictactoeSet[3].value === this.state.tictactoeSet[6].value;
-    const winCombo3 = this.state.tictactoeSet[0].value === this.state.tictactoeSet[4].value && this.state.tictactoeSet[4].value === this.state.tictactoeSet[8].value;
-    const winCombo4 = this.state.tictactoeSet[4].value === this.state.tictactoeSet[3].value && this.state.tictactoeSet[3].value === this.state.tictactoeSet[5].value;
-    const winCombo5 = this.state.tictactoeSet[4].value === this.state.tictactoeSet[1].value && this.state.tictactoeSet[1].value === this.state.tictactoeSet[7].value;
-    const winCombo6 = this.state.tictactoeSet[4].value === this.state.tictactoeSet[2].value && this.state.tictactoeSet[2].value === this.state.tictactoeSet[6].value;
-    const winCombo7 = this.state.tictactoeSet[8].value === this.state.tictactoeSet[6].value && this.state.tictactoeSet[6].value === this.state.tictactoeSet[7].value;
-    const winCombo8 = this.state.tictactoeSet[8].value === this.state.tictactoeSet[2].value && this.state.tictactoeSet[2].value === this.state.tictactoeSet[5].value;
-    if((this.state.tictactoeSet[0].value !== '' && (winCombo1 || winCombo2 || winCombo3))){
-      if(this.state.tictactoeSet[0].value === 'X'){
-        this.setState({
-          player1: { ...this.state.player1, score: this.state.player1.score + 1},
-          winner: 'player 1 wins',
-          gameOver: true,
-          showPopup: true
-        })
-      }else{
-        this.setState({
-          player2: { ...this.state.player2, score: this.state.player2.score + 1},
-          winner: 'player 2 wins',
-          gameOver: true,
-          showPopup: true
-        })
-      }
-
-      return true;
-    }else if((this.state.tictactoeSet[4].value !== '' && (winCombo4 || winCombo5 || winCombo6))){
-      if(this.state.tictactoeSet[4].value === 'X'){
-        this.setState({
-          player1: { ...this.state.player1, score: this.state.player1.score + 1},
-          winner: 'player 1 wins',
-          gameOver: true,
-          showPopup: true
-        })
-      }else{
-        this.setState({
-          player2: { ...this.state.player2, score: this.state.player2.score + 1},
-          winner: 'player 2 wins',
-          gameOver: true,
-          showPopup: true
-        })
-      }
-
-      return true;
-    }else if((this.state.tictactoeSet[8].value !== '' && (winCombo7 || winCombo8))){
-      if(this.state.tictactoeSet[8].value === 'X'){
-        this.setState({
-          player1: { ...this.state.player1, score: this.state.player1.score + 1},
-          winner: 'player 1 wins',
-          gameOver: true,
-          showPopup: true
-        })
-      }else{
-        this.setState({
-          player2: { ...this.state.player2, score: this.state.player2.score + 1},
-          winner: 'player 2 wins',
-          gameOver: true,
-          showPopup: true
-        })
-      }
-
-      return true;
+    const currentSet = this.state.tictactoeSet;
+    const winCombo1 = currentSet[0].value === currentSet[1].value && currentSet[1].value === currentSet[2].value;
+    const winCombo2 = currentSet[0].value === currentSet[3].value && currentSet[3].value === currentSet[6].value;
+    const winCombo3 = currentSet[0].value === currentSet[4].value && currentSet[4].value === currentSet[8].value;
+    const winCombo4 = currentSet[4].value === currentSet[3].value && currentSet[3].value === currentSet[5].value;
+    const winCombo5 = currentSet[4].value === currentSet[1].value && currentSet[1].value === currentSet[7].value;
+    const winCombo6 = currentSet[4].value === currentSet[2].value && currentSet[2].value === currentSet[6].value;
+    const winCombo7 = currentSet[8].value === currentSet[6].value && currentSet[6].value === currentSet[7].value;
+    const winCombo8 = currentSet[8].value === currentSet[2].value && currentSet[2].value === currentSet[5].value;
+    let winner = '';
+    if((currentSet[0].value !== '' && (winCombo1 || winCombo2 || winCombo3))){
+      winner = currentSet[0].value;
+    }else if((currentSet[4].value !== '' && (winCombo4 || winCombo5 || winCombo6))){
+      winner = currentSet[4].value;
+    }else if((currentSet[8].value !== '' && (winCombo7 || winCombo8))){
+      winner = currentSet[8].value;
     }else{
-      const hasEmptyField = this.state.tictactoeSet.find(function(object) {
+      const hasEmptyField = currentSet.find(function(object) {
         return object.value === ''
       })
-      if(hasEmptyField){
-        return false
-      }else{
+      if(!hasEmptyField){
         this.setState({
           player1: { ...this.state.player1, score: this.state.player1.score + 0.5},
           player2: { ...this.state.player2, score: this.state.player2.score + 0.5},
@@ -108,6 +60,22 @@ export default class TicTacToe extends React.Component {
       }
       
     }
+    if(winner === 'X'){
+      this.setState({
+        player1: { ...this.state.player1, score: this.state.player1.score + 1},
+        winner: 'player 1 wins',
+        gameOver: true,
+        showPopup: true
+      })
+    }
+    if(winner === 'O'){
+      this.setState({
+        player2: { ...this.state.player2, score: this.state.player2.score + 1},
+        winner: 'player 2 wins',
+        gameOver: true,
+        showPopup: true
+      })
+    }
   }
   onUserClick(position) {
     if(this.state.gameOver === true){
@@ -115,23 +83,13 @@ export default class TicTacToe extends React.Component {
     }else if(position.value !== ''){
     }else{
       let currentStateTictactoe = this.state.tictactoeSet;
-      let player1 = this.state.player1;
-      let player2 = this.state.player2;
       const searchForPosition = this.state.tictactoeSet.map(function(x) {return x.id; }).indexOf(position.id);
-      if(this.state.player1.turn){
-        currentStateTictactoe[searchForPosition].value = player1.type;
-        player1.turn = false;
-        player2.turn = true;
-      }else{
-        currentStateTictactoe[searchForPosition].value = player2.type;
-        player1.turn = true;
-        player2.turn = false;
-      }     
+      currentStateTictactoe[searchForPosition].value = this.state.player1.turn ? this.state.player1.type : this.state.player2.type;  
       this.setState({
-        player1: player1,
-        player2: player2,
+        player1: {...this.state.player1, turn: this.state.player2.turn},
+        player2: {...this.state.player2, turn: this.state.player1.turn},
         tictactoeSet: [...currentStateTictactoe]
-      }, () => this.winCombination());
+      }, this.winCombination);
     }
   }
 
