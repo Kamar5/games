@@ -21,6 +21,7 @@ export default class TicTacToe extends React.Component {
       },
       winner: '',
       gameOver: false,
+      showPopup: false,
       tictactoeSet: [{id: 11, value: ''},{id: 12, value: ''},{id: 13, value: ''},
                      {id: 21, value: ''},{id: 22, value: ''},{id: 23, value: ''},
                      {id: 31, value: ''},{id: 32, value: ''},{id: 33, value: ''}]
@@ -41,13 +42,15 @@ export default class TicTacToe extends React.Component {
         this.setState({
           player1: { ...this.state.player1, score: this.state.player1.score + 1},
           winner: 'player 1 wins',
-          gameOver: true
+          gameOver: true,
+          showPopup: true
         })
       }else{
         this.setState({
           player2: { ...this.state.player2, score: this.state.player2.score + 1},
           winner: 'player 2 wins',
-          gameOver: true
+          gameOver: true,
+          showPopup: true
         })
       }
 
@@ -57,13 +60,15 @@ export default class TicTacToe extends React.Component {
         this.setState({
           player1: { ...this.state.player1, score: this.state.player1.score + 1},
           winner: 'player 1 wins',
-          gameOver: true
+          gameOver: true,
+          showPopup: true
         })
       }else{
         this.setState({
           player2: { ...this.state.player2, score: this.state.player2.score + 1},
           winner: 'player 2 wins',
-          gameOver: true
+          gameOver: true,
+          showPopup: true
         })
       }
 
@@ -73,13 +78,15 @@ export default class TicTacToe extends React.Component {
         this.setState({
           player1: { ...this.state.player1, score: this.state.player1.score + 1},
           winner: 'player 1 wins',
-          gameOver: true
+          gameOver: true,
+          showPopup: true
         })
       }else{
         this.setState({
           player2: { ...this.state.player2, score: this.state.player2.score + 1},
           winner: 'player 2 wins',
-          gameOver: true
+          gameOver: true,
+          showPopup: true
         })
       }
 
@@ -95,7 +102,8 @@ export default class TicTacToe extends React.Component {
           player1: { ...this.state.player1, score: this.state.player1.score + 0.5},
           player2: { ...this.state.player2, score: this.state.player2.score + 0.5},
           winner: 'Draw',
-          gameOver: true
+          gameOver: true,
+          showPopup: true
         })
       }
       
@@ -103,9 +111,8 @@ export default class TicTacToe extends React.Component {
   }
   onUserClick(position) {
     if(this.state.gameOver === true){
-      alert('Game is over');
+      this.setState({showPopup: true})
     }else if(position.value !== ''){
-      alert('you already entered');
     }else{
       let currentStateTictactoe = this.state.tictactoeSet;
       let player1 = this.state.player1;
@@ -202,17 +209,14 @@ export default class TicTacToe extends React.Component {
   }
 
   renderModel(){
-    return(<Modal show={this.state.gameOver} >
-              <Modal.Header>
-                <Modal.Title>{this.state.winner} this round</Modal.Title>
+    return(<Modal show={this.state.showPopup} bsSize='small' style={{marginTop: '180px', cursor: 'pointer'}} aria-labelledby='contained-modal-title-sm'>
+              <Modal.Header  id="contained-modal-title-sm" onClick={() => { this.setState({showPopup: false})}}>
+                <Modal.Title> <h3 style={{textAlign: 'center'}}>{this.state.winner} this round</h3></Modal.Title>
               </Modal.Header>
-              <Modal.Body>
-                <h1 style={{textAlign: 'center'}}>Player 1 vs Player 2</h1>
-                <h2 style={{textAlign: 'center'}}>{this.state.player1.score} - {this.state.player2.score}</h2>
+              <Modal.Body onClick={() => { this.setState({showPopup: false})}}>
+                <h5 style={{textAlign: 'center'}}>Player 1 vs Player 2</h5>
+                <h4 style={{textAlign: 'center'}}>{this.state.player1.score} - {this.state.player2.score}</h4>
               </Modal.Body>
-              <Modal.Footer>
-                <Button onClick={this.resetBoard}>Play Again</Button>
-              </Modal.Footer>
             </Modal>)
   }
   renderWellField(fieldLocation, styleOfField){

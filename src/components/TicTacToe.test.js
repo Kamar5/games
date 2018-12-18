@@ -6,7 +6,7 @@ import { Well, Button } from 'react-bootstrap';
 it('should render with well and button compoents', () => {
   const wrapper = shallow(<TicTacToe />);
   expect(wrapper.find(Well).length).toEqual(9);
-  expect(wrapper.find(Button).length).toEqual(3);
+  expect(wrapper.find(Button).length).toEqual(2);
 });
 
 it('should reset to defualt values when click restart button', () => {

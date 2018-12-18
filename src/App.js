@@ -1,6 +1,8 @@
 import React from 'react';
-import TicTacToe from './components/TicTacToe';
 import { Tabs, Tab } from 'react-bootstrap';
+import TicTacToe from './components/TicTacToe';
+import Checkers from './components/Checkers';
+
 export default function App(){
   return (
     <div>
@@ -10,7 +12,7 @@ export default function App(){
           <TicTacToe />
         </Tab>
         <Tab eventKey={'checkers'} title="Checkers" style={{textAlign: 'center',backgroundColor: '#49add1'}}>
-          Comming Soon!
+          <Checkers />
         </Tab>
         <Tab eventKey={'chess'} title="Chess" style={{textAlign: 'center',backgroundColor: '#49add1'}}>
           Comming Soon!
