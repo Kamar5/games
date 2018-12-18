@@ -24,3 +24,10 @@ it('should reset to board values when click reset board button', () => {
   expect(wrapper.state().player1.turn).toEqual(false);
   expect(wrapper.state().player2.turn).toEqual(true);
 });
+
+it('should remove the modal when user invoke removeModel func', () => {
+  const wrapper = mount(<TicTacToe />);
+  wrapper.setState({ showPopup: true });
+  wrapper.instance().removeModel();
+  expect(wrapper.state().showPopup).toEqual(false);
+});

@@ -142,53 +142,34 @@ export default class TicTacToe extends React.Component {
   }
 
   resetBoard() {
-    let tempTictactoeSet = this.state.tictactoeSet;
-
-    tempTictactoeSet.map(function(x) { 
-      x.value = ''; 
-      return x
-    });
-
-    let player1;
-    let player2 = this.state.player2;
-    if(this.state.player1.initTurn){
-      player2 = {
-        ...this.state.player2,
-        turn: true,
-        initTurn: true,
-      }
-      player1 = {
-        ...this.state.player1,
-        turn: false,
-        initTurn: false,
-      }      
-    }else{
-      player1 = {
-        ...this.state.player1,
-        turn: true,
-        initTurn: true,
-      }
-      player2 = {
-        ...this.state.player2,
-        turn: false,
-        initTurn: false,
-      }
-    }
-    
+    let player1 = {
+      ...this.state.player1,
+      turn: this.state.player2.initTurn,
+      initTurn: this.state.player2.initTurn,
+    };
+    let player2 = {
+      ...this.state.player2,
+      turn: this.state.player1.initTurn,
+      initTurn: this.state.player1.initTurn,
+    }    
     this.setState({
       player1: player1,
       player2: player2,
-      tictactoeSet: [...tempTictactoeSet],
+      tictactoeSet: [...this.clearBoard()],
       gameOver: false
     })
   }
-  resetGame(){
+  clearBoard(){
     let tempTictactoeSet = this.state.tictactoeSet;
 
     tempTictactoeSet.map(function(x) { 
       x.value = ''; 
       return x
     });
+
+    return tempTictactoeSet;
+  }
+  resetGame(){
     this.setState({
       player1: {
         score: 0,
@@ -204,18 +185,20 @@ export default class TicTacToe extends React.Component {
       },
       winner: '',
       gameOver: false,
-      tictactoeSet: tempTictactoeSet
+      tictactoeSet: [...this.clearBoard()]
     })
   }
-
+  removeModel(){
+    this.setState({showPopup: false})
+  }
   renderModel(){
-    return(<Modal show={this.state.showPopup} bsSize='small' style={{marginTop: '180px', cursor: 'pointer'}} aria-labelledby='contained-modal-title-sm'>
-              <Modal.Header  id="contained-modal-title-sm" onClick={() => { this.setState({showPopup: false})}}>
-                <Modal.Title> <h3 style={{textAlign: 'center'}}>{this.state.winner} this round</h3></Modal.Title>
+    return(<Modal show={this.state.showPopup} bsSize='small' style={{marginTop: '180px', cursor: 'pointer',textAlign: 'center'}} aria-labelledby='contained-modal-title-sm'>
+              <Modal.Header  id="contained-modal-title-sm" onClick={this.removeModel}>
+                <Modal.Title>{this.state.winner} this round</Modal.Title>
               </Modal.Header>
-              <Modal.Body onClick={() => { this.setState({showPopup: false})}}>
-                <h5 style={{textAlign: 'center'}}>Player 1 vs Player 2</h5>
-                <h4 style={{textAlign: 'center'}}>{this.state.player1.score} - {this.state.player2.score}</h4>
+              <Modal.Body onClick={this.removeModel}>
+                <h5>Player 1 vs Player 2</h5>
+                <h4>{this.state.player1.score} - {this.state.player2.score}</h4>
               </Modal.Body>
             </Modal>)
   }
