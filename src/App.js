@@ -7,7 +7,7 @@ export default function App(){
   return (
     <div>
       <h2 style={{textAlign: 'center', margin: '0',paddingTop: '17px',backgroundColor: '#5ae45a'}}>Welcome to Game Center</h2>    
-      <Tabs defaultActiveKey={'tictactoe'} animation={false} id='gameCenter' style={{backgroundColor: '#5ae45a'}}> 
+      <Tabs defaultActiveKey={'checkers'} animation={false} id='gameCenter' style={{backgroundColor: '#5ae45a'}}> 
         <Tab eventKey={'tictactoe'} title="TicTacToe">
           <TicTacToe />
         </Tab>

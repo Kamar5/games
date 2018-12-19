@@ -1,0 +1,37 @@
+
+.checkers .well{
+    margin: 0;
+    padding: 0;
+    width: 45px;
+    height: 45px;
+    float: left;
+    border-radius: 0;
+}
+
+.checkers .checkersWellMain{
+    background-color:#706868;
+    cursor: pointer; 
+}
+
+.checkersId{
+    float: left;
+    font-size: 10px;
+    color: #f6f3f3;
+    margin-left: 1px
+}
+.player1Piece, .player2Piece{
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: -10px;
+    margin-top: 10px;
+}
+
+.player1Piece{
+    background-color: white;
+}
+
+.player2Piece{
+    background-color: black;
+}
